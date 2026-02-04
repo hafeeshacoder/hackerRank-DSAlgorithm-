@@ -1,0 +1,28 @@
+1) Mathematical Algorithms - Prime Security Checkpoints
+
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int start = sc.nextInt();
+        int end = sc.nextInt();
+
+        for (int i = start; i <= end; i++) {
+
+            if (i <= 1) continue;
+
+            if (i == 2 || i == 3 || i == 5 || i == 7) {
+                System.out.print(i + " ");
+                continue;
+            }
+
+            if (i % 2 == 0 || i % 3 == 0 || i % 5 == 0 || i % 7 == 0) {
+                continue;
+            }
+
+            System.out.print(i + " ");
+        }
+    }
+}
