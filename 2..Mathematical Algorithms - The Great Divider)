@@ -1,0 +1,22 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    static int find_gcd(int a,int b){
+       if(b==0){
+           return a;
+       } 
+        return find_gcd(b,a%b);
+    }
+
+    public static void main(String[] args) {
+     Scanner sc = new Scanner(System.in);
+        int num=sc.nextInt();
+        int result= sc.nextInt();
+        for(int i=1;i<num;i++){
+            int n=sc.nextInt();
+            result = find_gcd(result,n);
+        }
+        System.out.println(result);
+    }
+}
