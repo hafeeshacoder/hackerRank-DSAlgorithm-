@@ -1,0 +1,37 @@
+import java.io.*;
+import java.util.*;
+
+
+public class Solution {
+    static long gcd(long a,long b){
+        if(b==0)
+            return a;
+        return gcd(b,a%b);
+        
+    }
+
+    public static void main(String[] args) 
+    {
+        Scanner sc=new Scanner(System.in);
+        int n = sc.nextInt();
+        long k = sc.nextLong();
+        long[] num = new long[n];
+        for(int i =0;i<n;i++){
+            num[i]=sc.nextLong();
+        }
+        int count =0;
+        for(int i=0;i<n;i++){
+            long currentLCM = 1;//initialization 
+            for(int j=i;j<n;j++){
+                long gcd = gcd(currentLCM,num[j]);
+                currentLCM = (currentLCM * num[j])/gcd;
+                if(currentLCM > k)
+                    break;
+                if(currentLCM == k)
+                    count++;
+            }
+        }
+       System.out.print(count); 
+    }
+    
+}
