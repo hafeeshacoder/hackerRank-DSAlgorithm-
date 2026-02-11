@@ -1,0 +1,29 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();//abcdefg
+        int k = sc.nextInt(); //2
+
+        StringBuilder reversed = new StringBuilder();
+
+        for (int i = 0; i < s.length(); i += 2 * k) { //i=0 ;i<7;i+=2(2)=4  ||i=4
+
+            // reverse first k characters
+            int firstEnd = Math.min(i + k, s.length()); //math.min(0+2,7)=2  ||math.min(4+2,7)=6
+            String first = s.substring(i, firstEnd);//(0,2) ||(4,6)
+            reversed.append(new StringBuilder(first).reverse());//reverse("ab") = "ba" ||reverse("ef")=fe
+
+            // append next k characters as it is
+            int secondEnd = Math.min(i + 2 * k, s.length()); //math.min(0+4,7)=4  ||math.min(4+2*2,7)=7
+            if (firstEnd < secondEnd) { //(2 <4) ||(6<7)
+                reversed.append(s.substring(firstEnd, secondEnd)); //s.substring(2, 4) = "cd"  ||s.substring(6,7)="g"
+            }
+        }
+
+        System.out.println(reversed.toString());//bacd  ||bacdfeg
+    }
+}
