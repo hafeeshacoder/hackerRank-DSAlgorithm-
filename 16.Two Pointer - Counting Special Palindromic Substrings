@@ -1,0 +1,30 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        int count =0;
+        for(int i=0;i<str.length();i++){
+            for(int j=i;j<str.length();j++){
+                boolean isPalindrome = true;
+                int start = i ;
+                int end = j;
+                while(start < end){
+                    if(str.charAt(start)!=str.charAt(end)){
+                        isPalindrome = false;
+                        break;
+                    }
+                    start++;
+                    end--;
+                }//while
+                if(isPalindrome){
+                    count++;
+                }
+            }//j loop
+        }//i loop
+        System.out.println(count);
+    }
+}
